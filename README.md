@@ -293,12 +293,6 @@ Actualmente, el proyecto no cuenta con un framework de pruebas configurado. Para
 -   **Para ver la UI de pruebas (Vitest):**
     ```bash
     npm run test:ui
-    ```
-
-## Licencia
-
-MIT
-
 ---
 
 Desarrollado por DevCore Group. (Reemplazar con tu información si es un fork o adaptación)
