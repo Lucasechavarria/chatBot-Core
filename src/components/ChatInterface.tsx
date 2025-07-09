@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -71,7 +70,7 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, onSendMessage, isLoa
             : 'bg-[#86A869] text-white rounded-br-none'
         }`}
       >
-        <ReactMarkdown 
+        <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{
               p: ({node, ...props}) => <p className="mb-2 last:mb-0" {...props} />,
@@ -103,18 +102,6 @@ const ChatMessage: React.FC<ChatMessageProps> = ({ message, onSendMessage, isLoa
     </div>
   );
 };
-
-const TypingIndicator: React.FC = () => (
-    <div className="flex items-end gap-2 justify-start">
-        <div className="px-4 py-3 rounded-2xl bg-slate-700 text-gray-200 rounded-bl-none shadow-sm">
-            <div className="flex items-center justify-center space-x-1">
-                <div className="w-2 h-2 bg-slate-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-                <div className="w-2 h-2 bg-slate-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-                <div className="w-2 h-2 bg-slate-500 rounded-full animate-bounce"></div>
-            </div>
-        </div>
-    </div>
-);
 
 /**
  * TypingIndicator component.
@@ -160,7 +147,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, 
       setInput('');
     }
   };
-  
+
   const lastBotMessageWithOptionsIndex = useMemo(() => {
     if (isCompleted) return -1;
     for (let i = messages.length - 1; i >= 0; i--) {
@@ -177,7 +164,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ messages, onSendMessage, 
     <div className="flex flex-col h-full bg-slate-800">
       <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4">
         {messages.map((msg, index) => (
-          <ChatMessage 
+          <ChatMessage
             key={msg.id}
             message={msg}
             onSendMessage={onSendMessage}

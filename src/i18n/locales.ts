@@ -1,4 +1,3 @@
-
 import { Language } from '../types';
 
 /**
@@ -155,7 +154,7 @@ export const locales: LocaleStrings = {
     es: 'Chat finalizado. ¡Gracias!',
     pt: 'Bate-papo encerrado. Obrigado!',
   },
-  
+
   // Welcome & Error Messages
   initialBotMessageSeed: {
     en: 'My name is {name}. Greet me and start our consultation, following your system instructions.',

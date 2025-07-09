@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, Chat, GenerateContentResponse, Content } from "@google/genai";
 import { getSystemInstruction } from '../constants';
 import { Language } from "../types";
@@ -22,8 +21,8 @@ const ai = new GoogleGenAI({ apiKey: API_KEY! });
  */
 const getGeminiConnectionError = (): string => {
     // Default to English if language detection fails.
-    const lang = (document.documentElement.lang as Language) || 'en';
-    return locales.geminiConnectionError[lang];
+    const lang = (document.documentElement?.lang as Language) || 'en';
+    return locales.geminiConnectionError[lang] || locales.geminiConnectionError.en; // Fallback to 'en' if lang specific not found
 }
 
 /**

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { ContactMethod } from '../types';
 
@@ -53,7 +52,7 @@ const contactOptions: { id: ContactMethod; name: string; icon: string; hexColor:
  * @param {LeadCaptureFormProps} props - The props for the component.
  * @returns {React.ReactElement} The rendered lead capture form.
  */
-const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({ 
+const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
   onStartChat, isLoading, title, subtitle, namePlaceholder, contactPrompt, contactPlaceholders, buttonText, connectingText, changeButtonText, errorMessages
 }) => {
   const [name, setName] = useState('');
@@ -75,14 +74,14 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
       setError(errorMessages.errorContactInfoMissing);
       return;
     }
-    if (contactMethod === 'email' && !/\S+@\S+\.\S+/.test(contactInfo)) {
+    if (contactMethod === 'email' && !/\S+@\S+\.\S+/.test(contactInfo)) { // Restored original regex
       setError(errorMessages.errorInvalidEmail);
       return;
     }
     setError('');
     onStartChat({ name, contactMethod, contactInfo });
   };
-  
+
   const selectedOption = contactMethod && contactOptions.find(o => o.id === contactMethod);
 
   return (
@@ -104,7 +103,7 @@ const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
               disabled={isLoading}
             />
           </div>
-          
+
           <div>
             <p className="text-gray-400 text-left mb-3">{contactPrompt}</p>
             <div className="flex flex-wrap justify-center gap-3 min-h-[100px] items-center">

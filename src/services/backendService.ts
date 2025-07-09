@@ -1,9 +1,9 @@
-
 import { User, Message } from '../types';
 
 // TODO: Replace this with your actual n8n webhook URL.
 // This is the bridge between your app and services like email and Discord.
-const N8N_WEBHOOK_URL = 'https://YOUR_N8N_INSTANCE.com/webhook/YOUR_UNIQUE_ID'; 
+// The actual URL is expected to be set via VITE_N8N_WEBHOOK_URL environment variable
+const N8N_WEBHOOK_URL = process.env.N8N_WEBHOOK_URL || 'https://YOUR_N8N_INSTANCE.com/webhook/YOUR_UNIQUE_ID';
 
 /**
  * A backend service that sends data to an n8n webhook.
@@ -23,9 +23,9 @@ export const backendService = {
    */
   saveLead: async (user: User): Promise<void> => {
     console.log('SENDING LEAD TO N8N:', user);
-    if (N8N_WEBHOOK_URL.includes('YOUR_N8N_INSTANCE')) {
+    if (!N8N_WEBHOOK_URL || N8N_WEBHOOK_URL.includes('YOUR_N8N_INSTANCE')) {
         console.warn('Backend Service: Using placeholder N8N Webhook URL. Data is not being sent.');
-        return; // Do not proceed if using the placeholder URL
+        return; // Do not proceed if using the placeholder URL or if it's undefined
     }
     try {
       await fetch(N8N_WEBHOOK_URL, {
@@ -51,9 +51,9 @@ export const backendService = {
   saveConversation: async (user: User, messages: Message[]): Promise<void> => {
     const contactIdentifier = `${user.contactMethod}: ${user.contactInfo}`;
     console.log('SENDING CONVERSATION TO N8N for:', contactIdentifier, messages);
-     if (N8N_WEBHOOK_URL.includes('YOUR_N8N_INSTANCE')) {
+     if (!N8N_WEBHOOK_URL || N8N_WEBHOOK_URL.includes('YOUR_N8N_INSTANCE')) {
         // console.warn('Backend Service: Using placeholder N8N Webhook URL for conversation. Data is not being sent.');
-        return; // Don't send if using the placeholder URL.
+        return; // Don't send if using the placeholder URL or if it's undefined
     }
     try {
       await fetch(N8N_WEBHOOK_URL, {

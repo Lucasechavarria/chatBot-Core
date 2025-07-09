@@ -10,8 +10,21 @@ import { backendService } from './services/backendService';
 import { geminiService } from './services/geminiService';
 import { locales } from './i18n/locales';
 
+/**
+ * Represents the different states of the conversation flow.
+ * - `chatting`: Normal conversation mode.
+ * - `awaiting_email`: The bot has requested the user's email and is waiting for it.
+ * - `completed`: The conversation has concluded (e.g., after email capture).
+ */
 type FlowState = 'chatting' | 'awaiting_email' | 'completed';
 
+/**
+ * Main application component.
+ * Manages the overall state of the chat application, including language selection,
+ * user information, chat messages, loading states, and conversation flow.
+ *
+ * @returns {React.ReactElement} The rendered application.
+ */
 const App: React.FC = () => {
   const [language, setLanguage] = useState<Language | null>(null);
   const [user, setUser] = useState<User | null>(null);
