@@ -1,0 +1,6 @@
+{
+  "name": "DevCore Group AI Assistant",
+  "description": "An intelligent chatbot named Core to answer questions about DevCore Group's services in English, Spanish, and Portuguese. It captures leads and provides a seamless, easy-to-understand user experience, powered by the Gemini API.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}
